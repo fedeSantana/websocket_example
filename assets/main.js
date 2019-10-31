@@ -1,7 +1,7 @@
-let host = window.location.host
+let host = window.location.host;
 
-let ws = new WebSocket('ws://' + host + '/ws')
-let main = document.getElementById('main')
+let ws = new WebSocket("ws://" + host + "/ws");
+let content = document.getElementById("content");
 
 ws.onmessage = msg => {
   let p = document.createElement("p");
@@ -16,8 +16,3 @@ form.addEventListener("submit", event => {
   console.log(val);
   ws.send(val);
 });
-
-ws.onmessage((msg) => {
-    let p = document.createElement('p')
-    p.append(msg.data)
-})

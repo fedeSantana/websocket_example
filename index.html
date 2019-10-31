@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Hawkeye</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
   </head>
+
   <body>
-    <div class="main">
+    <section class="section">
       <form id="form">
         <input type="text" name="input" id="input" />
         <button type="submit">Enviar</button>
       </form>
       <div id="content" class="content"></div>
-    </div>
+    </section>
+    <section class="section">
+      <button class="button">Left</button>
+      <button class="button">Right</button>
+      <button class="button">Up</button>
+      <button class="button">Down</button>
+    </section>
+    <script defer src="assets/fontawesome-all.js"></script>
+    <script src="assets/main.js"></script>
   </body>
 </html>

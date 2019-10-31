@@ -6,11 +6,12 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 )
-//192.168.0.4:9036
-var addr = flag.String("addr", "192.168.0.6:3001", "http service address")
+
+var addr = flag.String("addr", "127.0.0.1:3001", "http service address")
 var upgrader = websocket.Upgrader{}
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
@@ -50,6 +51,11 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/", rootHandler).Methods("GET")
 	router.HandleFunc("/ws", echo)
+
+	staticFileDirectory := http.Dir("./assets/")
+	staticFileHandler := http.StripPrefix("/assets/", http.FileServer(staticFileDirectory))
+
+	router.PathPrefix("/assets/").Handler(staticFileHandler).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(*addr, router))
 }
