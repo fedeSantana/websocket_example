@@ -6,12 +6,11 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 )
-
-var addr = flag.String("addr", "localhost:9036", "http service address")
+//192.168.0.4:9036
+var addr = flag.String("addr", "192.168.0.6:3001", "http service address")
 var upgrader = websocket.Upgrader{}
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
